@@ -40,7 +40,7 @@
     <v-app-bar
       app
       prominent
-      color="primary"
+      color="#880E4F"
       dark
       src="shop.jpeg"
     >
