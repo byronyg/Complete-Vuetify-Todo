@@ -1,8 +1,20 @@
 <template>
   <div class="home">
+    <v-text-field
+      v-model="newTaskTitle"
+      class="pa-4"
+      outlined
+      label="Add Task"
+      append-icon="mdi-plus"
+      @click:append="addTask"
+      @keyup.enter="addTask"
+      hide-details
+      clearable
+      ></v-text-field>
       <v-list
       class="pt-0"
       flat
+      v-if="tasks.length"
       >
         <div 
           v-for="task in tasks"
@@ -20,12 +32,31 @@
                     {{ task.title }}
                    </v-list-item-title>
                 </v-list-item-content>
+
+                <v-list-item-action>
+                  <v-btn icon>
+                   <v-icon 
+                   color="grey lighten-1"
+                   @click.stop="deleteTask(task.id)">
+                      mdi-delete
+                   </v-icon>
+                   </v-btn>
+                </v-list-item-action>
               </template>
             </v-list-item>
             <v-divider></v-divider>
         </div>
 
-      </v-list>  
+      </v-list> 
+      <div v-else class="no-task">
+        <v-icon
+          size="100px"
+          color="primary"
+          >
+          mdi-check
+        </v-icon>
+        <div class="text-h5 primary--text">No tasks</div>
+       </div> 
    </div>
 </template>
 
@@ -34,27 +65,28 @@ export default {
   name: 'Home',
   data() {
     return {
+      newTaskTitle: '',
       tasks: [
-        {
-          id: 1,
-          title: 'Wake Up',
-          done: false
-        },
-        {
-          id: 2,
-          title: 'Brush Teeth',
-          done: false
-        },
-        {
-          id: 3,
-          title: 'Have Breakfast',
-          done: false
-        },
-        {
-          id: 4,
-          title: 'Take Shower',
-          done: false
-        }
+        // {
+        //   id: 1,
+        //   title: 'Wake Up',
+        //   done: false
+        // },
+        // {
+        //   id: 2,
+        //   title: 'Brush Teeth',
+        //   done: false
+        // },
+        // {
+        //   id: 3,
+        //   title: 'Have Breakfast',
+        //   done: false
+        // },
+        // {
+        //   id: 4,
+        //   title: 'Take Shower',
+        //   done: false
+        // }
       ]
     }
   },
@@ -62,7 +94,28 @@ export default {
     doneTask(id) {
       let task = this.tasks.filter(task => task.id === id)[0]
       task.done = !task.done
+    },
+    deleteTask(id) {
+      this.tasks = this.tasks.filter(task => task.id !== id)
+    },
+    addTask() {
+      let newTask = {
+        id: Date.now,
+        title: this.newTaskTitle,
+        done: false
+      }
+      this.tasks.push(newTask)
+      this.newTaskTitle = ''
     }
   }
 }
 </script>
+<style lang="sass">
+.no-task 
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+  opacity: 0.5
+
+</style>
