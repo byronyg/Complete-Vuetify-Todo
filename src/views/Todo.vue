@@ -6,18 +6,18 @@
       outlined
       label="Add Task"
       append-icon="mdi-plus"
-      @click:append="addTask"
-      @keyup.enter="addTask"
+      @click:append="$store.commit('addTask', newTaskTitle)"
+      @keyup.enter="$store.commit('addTask', newTaskTitle)"
       hide-details
       clearable
       ></v-text-field>
       <v-list
       class="pt-0"
       flat
-      v-if="tasks.length"
+      v-if="$store.state.tasks.length"
       >
         <div 
-          v-for="task in tasks"
+          v-for="task in $store.state.tasks"
           :key="task.id">
             <v-list-item 
             @click="doneTask(task.id)"
@@ -66,28 +66,6 @@ export default {
   data() {
     return {
       newTaskTitle: '',
-      tasks: [
-        // {
-        //   id: 1,
-        //   title: 'Wake Up',
-        //   done: false
-        // },
-        // {
-        //   id: 2,
-        //   title: 'Brush Teeth',
-        //   done: false
-        // },
-        // {
-        //   id: 3,
-        //   title: 'Have Breakfast',
-        //   done: false
-        // },
-        // {
-        //   id: 4,
-        //   title: 'Take Shower',
-        //   done: false
-        // }
-      ]
     }
   },
   methods: {
@@ -97,16 +75,7 @@ export default {
     },
     deleteTask(id) {
       this.tasks = this.tasks.filter(task => task.id !== id)
-    },
-    addTask() {
-      let newTask = {
-        id: Date.now,
-        title: this.newTaskTitle,
-        done: false
-      }
-      this.tasks.push(newTask)
-      this.newTaskTitle = ''
-    }
+    } 
   }
 }
 </script>
