@@ -2,12 +2,12 @@
   <div class="home">
     <v-text-field
       v-model="newTaskTitle"
+      @click:append="addTask"
+      @keyup.enter="addTask"
       class="pa-4"
       outlined
       label="Add Task"
       append-icon="mdi-plus"
-      @click:append="$store.commit('addTask', newTaskTitle)"
-      @keyup.enter="$store.commit('addTask', newTaskTitle)"
       hide-details
       clearable
       ></v-text-field>
@@ -69,6 +69,11 @@ export default {
     }
   },
   methods: {
+    addTask() {
+      this.$store.commit('addTask', this.newTaskTitle)
+      this.newTaskTitle = ''
+
+    },
     doneTask(id) {
       let task = this.tasks.filter(task => task.id === id)[0]
       task.done = !task.done
