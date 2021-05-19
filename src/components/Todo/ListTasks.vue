@@ -1,45 +1,22 @@
 <template>
   <v-list
       class="pt-0"
-      flat
-      
-      >
-        <div 
-          v-for="task in $store.state.tasks"
-          :key="task.id">
-            <v-list-item 
-            @click="$store.commit('doneTask', task.id)"
-            :class="{ 'blue lighten-5' : task.done }">
-              <template v-slot:default>
-                <v-list-item-action>
-                  <v-checkbox :input-value="task.done"></v-checkbox>
-                </v-list-item-action>
+      flat >
+     
+     <task 
+       v-for="task in $store.state.tasks"
+        :key="task.id"
+        :task="task" />
 
-                <v-list-item-content>
-                  <v-list-item-title :class="{'text-decoration-line-through' : task.done}">
-                    {{ task.title }}
-                   </v-list-item-title>
-                </v-list-item-content>
-
-                <v-list-item-action>
-                  <v-btn icon>
-                   <v-icon 
-                   color="grey lighten-1"
-                   @click.stop="$store.commit('deleteTask', task.id)">
-                      mdi-delete
-                   </v-icon>
-                   </v-btn>
-                </v-list-item-action>
-              </template>
-            </v-list-item>
-            <v-divider></v-divider>
-        </div>
-
-      </v-list> 
+  </v-list> 
 </template>
 
 <script>
+import Task from './Task.vue'
 export default {
+    components : {
+        'task' : require('@/components/Todo/Task.vue').default
+    }
 
 }
 </script>
