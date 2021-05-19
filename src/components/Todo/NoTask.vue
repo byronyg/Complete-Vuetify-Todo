@@ -1,5 +1,5 @@
 <template>
-  <div v-else class="no-task">
+  <div>
         <v-icon
           size="100px"
           color="primary"
@@ -10,12 +10,13 @@
        </div> 
 </template>
 
-<script>
-export default {
+<style lang="sass">
+.no-task 
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+  opacity: 0.5
 
-}
-</script>
-
-<style>
 
 </style>
