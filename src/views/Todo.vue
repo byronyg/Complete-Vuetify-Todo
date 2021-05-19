@@ -1,43 +1,8 @@
 <template>
   <div class="home">
     <field-add-task />
-      <v-list
-      class="pt-0"
-      flat
-      v-if="$store.state.tasks.length"
-      >
-        <div 
-          v-for="task in $store.state.tasks"
-          :key="task.id">
-            <v-list-item 
-            @click="$store.commit('doneTask', task.id)"
-            :class="{ 'blue lighten-5' : task.done }">
-              <template v-slot:default>
-                <v-list-item-action>
-                  <v-checkbox :input-value="task.done"></v-checkbox>
-                </v-list-item-action>
-
-                <v-list-item-content>
-                  <v-list-item-title :class="{'text-decoration-line-through' : task.done}">
-                    {{ task.title }}
-                   </v-list-item-title>
-                </v-list-item-content>
-
-                <v-list-item-action>
-                  <v-btn icon>
-                   <v-icon 
-                   color="grey lighten-1"
-                   @click.stop="$store.commit('deleteTask', task.id)">
-                      mdi-delete
-                   </v-icon>
-                   </v-btn>
-                </v-list-item-action>
-              </template>
-            </v-list-item>
-            <v-divider></v-divider>
-        </div>
-
-      </v-list> 
+    <list-tasks v-if="$store.state.tasks.length" />
+      
       <div v-else class="no-task">
         <v-icon
           size="100px"
@@ -52,10 +17,13 @@
 
 <script>
 import FieldAddTask from '../components/Todo/FieldAddTask.vue'
+import ListTasks from '../components/Todo/ListTasks.vue'
 export default {
   name: 'Home',
   components: {
-    'field-add-task' : require('@/components/Todo/FieldAddTask.vue').default
+    'field-add-task' : require('@/components/Todo/FieldAddTask.vue').default,
+    'list-tasks' : require('@/components/Todo/ListTasks.vue').default
+
   }
 }
 </script>
