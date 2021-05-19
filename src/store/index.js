@@ -25,7 +25,10 @@ export default new Vuex.Store({
         id: 4,
         title: 'Take Shower',
         done: false
-      } ]
+      } ],
+    snackbar : {
+      show: true
+    }
   },
   mutations: {
     addTask(state, newTaskTitle) {
