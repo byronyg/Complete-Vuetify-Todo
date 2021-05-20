@@ -60,6 +60,9 @@ export default new Vuex.Store({
         state.snackbar.text = text
         
       }, timeout);
+    },
+    hideSnackbar(state) {
+      state.snackbar.show = false
     } 
   },
   actions: {
