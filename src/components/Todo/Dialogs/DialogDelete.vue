@@ -6,24 +6,23 @@
     >
       <v-card>
         <v-card-title class="headline">
-          Are you sure you want to delete this item?
+          Delete this item?
         </v-card-title>
-        <v-card-text>By clicking yes you understand that the task will be removed from the database and this fuction is irreversible.</v-card-text>
+        <v-card-text>By clicking <strong>YES</strong> you understand that the task will be removed from the database and this fuction is irreversible.</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            color="pink darken-1"
             text
             @click="dialog = false"
           >
-            Disagree
+            No
           </v-btn>
           <v-btn
             color="pink darken-1"
             text
             @click="dialog = false"
           >
-            Agree
+            Yes
           </v-btn>
         </v-card-actions>
       </v-card>
