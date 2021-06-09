@@ -27,7 +27,7 @@
             </v-list-item>
             <v-divider></v-divider>
 
-            <dialog-delete v-if="dialogs.delete"/>
+            <dialog-delete v-if="dialogs.delete" :task="task" @close="dialogs.delete = false"/>
         </div>
 </template>
 
