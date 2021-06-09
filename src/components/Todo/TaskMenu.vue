@@ -1,8 +1,9 @@
 <template>
-<v-menu
-   bottom
-   left
-  >
+<div>
+    <v-menu
+        bottom
+        left
+        >
             <template v-slot:activator="{ on, attrs }">
               <v-btn
                 color="pink"
@@ -24,13 +25,25 @@
                 <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item>
             </v-list>
-          </v-menu>
+    </v-menu>
+
+    <dialog-delete 
+        v-if="dialogs.delete" 
+        :task="task" 
+        @close="dialogs.delete = false"/>
+
+</div>
   
 </template>
 
 <script>
 export default {
+    props: ['task'],
     data: () => ({
+      
+      dialogs: {
+          delete: false
+      },
       items: [
         { 
             title: 'Edit', 
@@ -52,7 +65,7 @@ export default {
             title: 'Delete', 
             icon: 'mdi-delete',
             click() {
-                console.log("delete")
+                this.dialogs.delete = true
             } 
             
         },
@@ -60,8 +73,11 @@ export default {
       }),
       methods: {
           handleClick(index) {
-              this.items[index].click()
+              this.items[index].click.call(this)
           }
+      },
+      components: {
+      'dialog-delete' : require('@/components/Todo/Dialogs/DialogDelete.vue').default
       }
 }
       </script>
