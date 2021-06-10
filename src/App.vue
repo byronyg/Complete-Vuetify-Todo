@@ -6,10 +6,10 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title">
-            🛒 Shopping List
+            Create a List
           </v-list-item-title>
           <v-list-item-subtitle>
-            Best Shopping Cart Ever
+            Best List Ever
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -52,7 +52,7 @@
 
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-app-bar-title>🛒 Shopping List</v-app-bar-title>
+      <v-app-bar-title>Create a List</v-app-bar-title>
 
       <v-spacer></v-spacer>
 
