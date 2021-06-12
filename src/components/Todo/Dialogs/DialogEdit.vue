@@ -20,7 +20,7 @@
             Cancel
           </v-btn>
           <v-btn
-            @click="$store.dispatch('deleteTask', task.id)"
+            @click="saveTask()"
             color="pink darken-1"
             text
           >
@@ -41,6 +41,15 @@ export default {
  props: ['task'],
  mounted() {
    this.taskTitle = this.task.title  
+ },
+ methods: {
+   saveTask() {
+     let payload = {
+       id: this.task.id,
+       title: this.taskTitle
+     }
+     this.$store.commit('updateTask', payload)
+   }
  }
 }
 </script>
