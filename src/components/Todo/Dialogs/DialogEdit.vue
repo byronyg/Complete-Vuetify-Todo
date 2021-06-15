@@ -49,6 +49,7 @@ export default {
        title: this.taskTitle
      }
      this.$store.commit('updateTask', payload)
+     this.$emit('close')
    }
  }
 }
