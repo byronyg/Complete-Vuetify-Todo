@@ -9,22 +9,26 @@ export default new Vuex.Store({
       {
         id: 1,
         title: 'Wake Up',
-        done: false
+        done: false,
+        dueDate: '2020-10-16'
       },
       {
         id: 2,
         title: 'Brush Teeth',
-        done: false
+        done: false,
+        dueDate: '2020-10-17'
       },
       {
         id: 3,
         title: 'Have Breakfast',
-        done: false
+        done: false,
+        dueDate: '2020-10-18'
       },
       {
         id: 4,
         title: 'Take Shower',
-        done: false
+        done: false,
+        dueDate: null
       } ],
     snackbar : {
       show: false,
@@ -36,7 +40,8 @@ export default new Vuex.Store({
       let newTask = {
         id: Date.now,
         title: newTaskTitle,
-        done: false
+        done: false,
+        dueDate: null
       }
       state.tasks.push(newTask)  
     },
