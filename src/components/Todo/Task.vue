@@ -16,7 +16,7 @@
 
                 <v-list-item-action v-if="task.dueDate">
                 <v-list-item-action-text>
-                  <v-icon small>mdi-calendar</v-icon>
+                  <v-icon small color="pink">mdi-calendar</v-icon>
                   {{ task.dueDate | niceDate }}
                 </v-list-item-action-text>
               </v-list-item-action>
