@@ -39,7 +39,7 @@
 export default {
   data() {
     return {
-      taskTitle: null
+      taskTitle: null 
     }
   },
  props: ['task'],
