@@ -40,7 +40,7 @@
     <v-app-bar
       app
       prominent
-      color="#E91E63"
+        color="#E91E63"
       dark
     >
       <template v-slot:img="{ props }">
